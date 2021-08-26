@@ -250,21 +250,27 @@ public class AlunoTeste extends javax.swing.JFrame {
         
         d.cadastrar(nc);
         
-        totalcad.setText(d.numeroDeAlunos());
-        
-        System.out.println(nc);
-        
-        
-        
-        JOptionPane.showMessageDialog(this,"Aluno Cadastrado!");
-        
-        tdmatricula.setText("");
-        tdnome.setText("");
-        tdidade.setText("");
-        tdnascimento.setText("");
-        tdtelefone.setText("");
-        tdcpf.setText("");
-        
+        for (Cadastros aluno : d.alunos) {
+            if(d.alunos.contains(tdmatricula) ){
+                System.out.println("Aluno não cadastrado!");
+            }else{
+                
+                totalcad.setText(d.numeroDeAlunos());
+                
+                System.out.println(nc);
+                
+                
+                
+                JOptionPane.showMessageDialog(this,"Aluno Cadastrado!");
+                
+                tdmatricula.setText("");
+                tdnome.setText("");
+                tdidade.setText("");
+                tdnascimento.setText("");
+                tdtelefone.setText("");
+                tdcpf.setText("");
+            }
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
