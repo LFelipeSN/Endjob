@@ -1,5 +1,7 @@
 package CadastrosProject;
 
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -47,16 +49,12 @@ public class AlunoTeste extends javax.swing.JFrame {
         tdmatricula = new javax.swing.JTextField();
         tdnome = new javax.swing.JTextField();
         tdidade = new javax.swing.JTextField();
-        tdtelefone = new javax.swing.JTextField();
-        tdcpf = new javax.swing.JTextField();
         tdnascimento = new javax.swing.JFormattedTextField();
         totalcad = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        tdtelefone = new javax.swing.JFormattedTextField();
+        tdcpf = new javax.swing.JFormattedTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
 
         jTextField1.setText("jTextField1");
 
@@ -69,6 +67,8 @@ public class AlunoTeste extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CadastroAlunos");
         setResizable(false);
+
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         txtMatricula.setText("Matricula:");
 
@@ -106,12 +106,6 @@ public class AlunoTeste extends javax.swing.JFrame {
             }
         });
 
-        tdtelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tdtelefoneActionPerformed(evt);
-            }
-        });
-
         try {
             tdnascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -126,6 +120,23 @@ public class AlunoTeste extends javax.swing.JFrame {
         totalcad.setText("0");
 
         jLabel1.setText("Total de alunos Cadastrados:");
+
+        try {
+            tdtelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("+##(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        tdtelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tdtelefoneActionPerformed(evt);
+            }
+        });
+
+        try {
+            tdcpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###.-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,8 +155,8 @@ public class AlunoTeste extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tdtelefone)
-                            .addComponent(tdcpf, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)))
+                            .addComponent(tdtelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                            .addComponent(tdcpf)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel4)
@@ -167,7 +178,7 @@ public class AlunoTeste extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(totalcad, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +207,7 @@ public class AlunoTeste extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(tdcpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -204,20 +215,6 @@ public class AlunoTeste extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addContainerGap())
         );
-
-        jMenu1.setText("Sobre");
-
-        jMenu5.setText("teste");
-        jMenu1.add(jMenu5);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Sair");
-
-        jMenuItem1.setText("jMenuItem1");
-        jMenu2.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -230,7 +227,7 @@ public class AlunoTeste extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 8, Short.MAX_VALUE)
+                .addGap(0, 19, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -240,10 +237,6 @@ public class AlunoTeste extends javax.swing.JFrame {
     private void tdnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdnomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tdnomeActionPerformed
-
-    private void tdtelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdtelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tdtelefoneActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String matricula=tdmatricula.getText();
@@ -260,6 +253,19 @@ public class AlunoTeste extends javax.swing.JFrame {
         totalcad.setText(d.numeroDeAlunos());
         
         System.out.println(nc);
+        
+        
+        
+        JOptionPane.showMessageDialog(this,"Aluno Cadastrado!");
+        
+        tdmatricula.setText("");
+        tdnome.setText("");
+        tdidade.setText("");
+        tdnascimento.setText("");
+        tdtelefone.setText("");
+        tdcpf.setText("");
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tdmatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdmatriculaActionPerformed
@@ -273,6 +279,10 @@ public class AlunoTeste extends javax.swing.JFrame {
     private void tdnascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdnascimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tdnascimentoActionPerformed
+
+    private void tdtelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdtelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tdtelefoneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,22 +327,18 @@ public class AlunoTeste extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField tdcpf;
+    private javax.swing.JFormattedTextField tdcpf;
     private javax.swing.JTextField tdidade;
     private javax.swing.JTextField tdmatricula;
     private javax.swing.JFormattedTextField tdnascimento;
     private javax.swing.JTextField tdnome;
-    private javax.swing.JTextField tdtelefone;
+    private javax.swing.JFormattedTextField tdtelefone;
     private javax.swing.JLabel totalcad;
     private javax.swing.JLabel txtMatricula;
     // End of variables declaration//GEN-END:variables

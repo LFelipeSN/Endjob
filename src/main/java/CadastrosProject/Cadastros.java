@@ -58,7 +58,7 @@ public class Cadastros {
 
     @Override
     public String toString() {
-        return nome + "" + matricula+ "" +dataN+ "" +""+ telefone +""+ cpf; //To change body of generated methods, choose Tools | Templates.
+        return nome +" "+ matricula+" "+dataN+" "+" "+ telefone +" "+ cpf; //To change body of generated methods, choose Tools | Templates.
     }
     
     
