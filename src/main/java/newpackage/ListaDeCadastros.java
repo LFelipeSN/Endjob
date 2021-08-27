@@ -1,5 +1,5 @@
-package CadastrosProject;
-
+package newpackage;
+/*
 import java.util.ArrayList;
 
 public class ListaDeCadastros {
@@ -20,3 +20,4 @@ public class ListaDeCadastros {
     }
     
 }
+*/

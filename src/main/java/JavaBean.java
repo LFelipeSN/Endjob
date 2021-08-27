@@ -1,14 +1,11 @@
-package CadastrosProject;
-
-
-public class Cadastros {  
+public class JavaBean {  
     private String matricula;
     private String nome;
     private String dataN;
     private String telefone;
     private String cpf;
 
-    public Cadastros(String matricula, String nome, String dataN, String telefone, String cpf) {
+    public JavaBean(String matricula, String nome, String dataN, String telefone, String cpf) {
         this.matricula = matricula;
         this.nome = nome;
         this.dataN = dataN;
@@ -58,7 +55,7 @@ public class Cadastros {
 
     @Override
     public String toString() {
-        return nome +" "+ matricula+" "+dataN+" "+" "+ telefone +" "+ cpf; //To change body of generated methods, choose Tools | Templates.
+        return matricula +" "+ nome+" "+dataN+" "+ telefone +" "+ cpf; //falta a idade
     }
     
     
