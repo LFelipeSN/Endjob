@@ -1,4 +1,8 @@
-package telas;
+
+
+import java.util.Iterator;
+import javax.swing.JOptionPane;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,9 +15,8 @@ package telas;
  *
  * @author Win10
  */
-public class AlunoTeste extends javax.swing.JFrame {
-    
-    Dados d = new Dados();
+public class AlunoTeste extends javax.swing.JFrame {    
+    Cadastros d = new Cadastros();
     
     
     /**
@@ -32,10 +35,7 @@ public class AlunoTeste extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        cadastros2 = new Cadastros();
         jPanel1 = new javax.swing.JPanel();
         txtMatricula = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -47,28 +47,40 @@ public class AlunoTeste extends javax.swing.JFrame {
         tdmatricula = new javax.swing.JTextField();
         tdnome = new javax.swing.JTextField();
         tdidade = new javax.swing.JTextField();
-        tdtelefone = new javax.swing.JTextField();
-        tdcpf = new javax.swing.JTextField();
         tdnascimento = new javax.swing.JFormattedTextField();
         totalcad = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        tdtelefone = new javax.swing.JFormattedTextField();
+        tdcpf = new javax.swing.JFormattedTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-
-        jTextField1.setText("jTextField1");
-
-        jMenu3.setText("File");
-        jMenuBar2.add(jMenu3);
-
-        jMenu4.setText("Edit");
-        jMenuBar2.add(jMenu4);
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
+        jMenu11 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu12 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu14 = new javax.swing.JMenu();
+        jMenu15 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu13 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CadastroAlunos");
         setResizable(false);
+
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                jPanel1ComponentMoved(evt);
+            }
+        });
 
         txtMatricula.setText("Matricula:");
 
@@ -106,12 +118,6 @@ public class AlunoTeste extends javax.swing.JFrame {
             }
         });
 
-        tdtelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tdtelefoneActionPerformed(evt);
-            }
-        });
-
         try {
             tdnascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -126,6 +132,23 @@ public class AlunoTeste extends javax.swing.JFrame {
         totalcad.setText("0");
 
         jLabel1.setText("Total de alunos Cadastrados:");
+
+        try {
+            tdtelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("+##(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        tdtelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tdtelefoneActionPerformed(evt);
+            }
+        });
+
+        try {
+            tdcpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###.##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,8 +167,8 @@ public class AlunoTeste extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tdtelefone)
-                            .addComponent(tdcpf, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)))
+                            .addComponent(tdtelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                            .addComponent(tdcpf)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel4)
@@ -167,7 +190,7 @@ public class AlunoTeste extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(totalcad, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +219,7 @@ public class AlunoTeste extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(tdcpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -205,19 +228,76 @@ public class AlunoTeste extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jMenu1.setText("Sobre");
+        jMenu1.setText("Criar");
 
-        jMenu5.setText("teste");
-        jMenu1.add(jMenu5);
+        jMenu7.setText("Crie um objeto da classe Aluno... ");
+
+        jMenuItem1.setText("e verifique se já está na lista");
+        jMenu7.add(jMenuItem1);
+
+        jMenu1.add(jMenu7);
+
+        jMenu3.setText("Cria a documentação usando... ");
+
+        jMenuItem9.setText("o Java doc de pelo menos uma classe do seu programa");
+        jMenu3.add(jMenuItem9);
+
+        jMenu1.add(jMenu3);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Sair");
+        jMenu2.setText("Inserir");
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenu2.add(jMenuItem1);
+        jMenuItem8.setText("Insira um novo Aluno na terceira posição");
+        jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu10.setText("Obter");
+
+        jMenu11.setText("Obter 3°elemento");
+
+        jMenuItem5.setText("e imprimir a quantidade de elementos da lista");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu11.add(jMenuItem5);
+
+        jMenu10.add(jMenu11);
+
+        jMenu12.setText("Obter a matricula ");
+
+        jMenuItem3.setText("do primeiro e ultimo elemento da lista");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(jMenuItem3);
+
+        jMenu10.add(jMenu12);
+
+        jMenuBar1.add(jMenu10);
+
+        jMenu14.setText("Percorrer");
+
+        jMenu15.setText("Percorrer toda a lista ");
+
+        jMenuItem7.setText("e identificar o aluno mais novo e mais velho");
+        jMenu15.add(jMenuItem7);
+
+        jMenu14.add(jMenu15);
+
+        jMenuBar1.add(jMenu14);
+
+        jMenu13.setText("Remover");
+
+        jMenuItem6.setText("Remover o último elemento da lista");
+        jMenu13.add(jMenuItem6);
+
+        jMenuBar1.add(jMenu13);
 
         setJMenuBar(jMenuBar1);
 
@@ -230,7 +310,7 @@ public class AlunoTeste extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 8, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -241,25 +321,43 @@ public class AlunoTeste extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tdnomeActionPerformed
 
-    private void tdtelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdtelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tdtelefoneActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String matricula=tdmatricula.getText();
         String nome=tdnome.getText();
-        //int idade=tdidade.getText();
+        int idade=Integer.parseInt(tdidade.getText());
         String dataN=tdnascimento.getText();
         String telefone=tdtelefone.getText();
         String cpf=tdcpf.getText();
         
-        Cadastros nc = new Cadastros(matricula,nome,dataN,telefone,cpf);
+        JavaBean nc = new JavaBean(matricula,nome,dataN,telefone,cpf);
+        Iterator<JavaBean> Ai = d.alunos.iterator();
         
-        d.cadastrar(nc);
-        
-        totalcad.setText(d.numeroDeAlunos());
-        
-        System.out.println(nc);
+        d.cadastrar(nc);   
+ 
+        String mat=Ai.next().getMatricula();
+        //System.out.println(mat);
+        //System.out.println(matricula);
+              
+          //System.out.println(mat.equals(matricula));
+          
+            if(matricula.equals(Ai.next().getMatricula())){     
+                JOptionPane.showMessageDialog(this,"Aluno não Cadastrado!");
+            }else{ 
+                
+                totalcad.setText(d.numeroDeAlunos());
+                
+                System.out.println(nc);
+         
+                JOptionPane.showMessageDialog(this,"Aluno Cadastrado!");
+                
+                tdmatricula.setText("");
+                tdnome.setText("");
+                tdidade.setText("");
+                tdnascimento.setText("");//não está apagando
+                tdtelefone.setText("");////não está apagando
+                tdcpf.setText("");////não está apagando
+                
+            }       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tdmatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdmatriculaActionPerformed
@@ -273,6 +371,32 @@ public class AlunoTeste extends javax.swing.JFrame {
     private void tdnascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdnascimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tdnascimentoActionPerformed
+
+    private void tdtelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdtelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tdtelefoneActionPerformed
+
+    private void jPanel1ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1ComponentMoved
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       System.out.println(d.alunos.get(2)+" "+d.numeroDeAlunos());       
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        Iterator<JavaBean> Ai = d.alunos.iterator();
+        String cabecinha=Ai.next().getMatricula();
+        
+        while(Ai.hasNext()){
+            int i = 0;
+            
+            if(i==0 || i==d.alunos.size()-1){
+                System.out.println(cabecinha);      
+            }
+          i++;
+        }        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -300,7 +424,6 @@ public class AlunoTeste extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AlunoTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -311,6 +434,7 @@ public class AlunoTeste extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Cadastros cadastros2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -319,21 +443,30 @@ public class AlunoTeste extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu13;
+    private javax.swing.JMenu jMenu14;
+    private javax.swing.JMenu jMenu15;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField tdcpf;
+    private javax.swing.JFormattedTextField tdcpf;
     private javax.swing.JTextField tdidade;
     private javax.swing.JTextField tdmatricula;
     private javax.swing.JFormattedTextField tdnascimento;
     private javax.swing.JTextField tdnome;
-    private javax.swing.JTextField tdtelefone;
+    private javax.swing.JFormattedTextField tdtelefone;
     private javax.swing.JLabel totalcad;
     private javax.swing.JLabel txtMatricula;
     // End of variables declaration//GEN-END:variables
