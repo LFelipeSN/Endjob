@@ -1,10 +1,7 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 public class Cadastros {
     
-    ArrayList<JavaBean> alunos = new ArrayList();
-    
-    
+    ArrayList<JavaBean> alunos = new ArrayList();   
     
     public void cadastrar(JavaBean cad){
         alunos.add(cad);
@@ -13,7 +10,8 @@ public class Cadastros {
     public String numeroDeAlunos(){
         return alunos.size() + "";
     }
-            
+    
+    
     
     /*
     public boolean equals(Object o) {

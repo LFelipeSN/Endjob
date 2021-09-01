@@ -1,0 +1,3 @@
+matricula,nome,idade,dataNascimento,telefone,cpf
+1,Ana,20,01/02/2001,(98)1234-5678,111.111.111.11
+2,Maria,25,20/05/1996,(98)9876-5432,222.222.222.22

@@ -46,6 +46,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Insira um novo Aluno na terceira posi&#xe7;&#xe3;o"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem8ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -100,6 +103,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="e identificar o aluno mais novo e mais velho"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7ActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -114,6 +120,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remover o &#xfa;ltimo elemento da lista"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -4,13 +4,15 @@ public class JavaBean {
     private String dataN;
     private String telefone;
     private String cpf;
+    private int idade;
 
-    public JavaBean(String matricula, String nome, String dataN, String telefone, String cpf) {
+    public JavaBean(String matricula,int idade ,String nome, String dataN, String telefone, String cpf) {
         this.matricula = matricula;
         this.nome = nome;
         this.dataN = dataN;
         this.telefone = telefone;
         this.cpf = cpf;
+        this.idade=idade;
     }
 
     public String getMatricula() {
@@ -53,10 +55,19 @@ public class JavaBean {
         this.cpf = cpf;
     }
 
-    @Override
-    public String toString() {
-        return matricula +" "+ nome+" "+dataN+" "+ telefone +" "+ cpf; //falta a idade
+    
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
     
+    
+    @Override
+    public String toString() {
+        return matricula +" "+ nome+" "+idade+" "+dataN+" "+ telefone +" "+ cpf; 
+    }
     
 }

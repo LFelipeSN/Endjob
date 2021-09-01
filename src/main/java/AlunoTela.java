@@ -15,14 +15,14 @@ import javax.swing.JOptionPane;
  *
  * @author Win10
  */
-public class AlunoTeste extends javax.swing.JFrame {    
+public class AlunoTela extends javax.swing.JFrame {    
     Cadastros d = new Cadastros();
     
     
     /**
      * Creates new form AlunoTeste
      */
-    public AlunoTeste() {
+    public AlunoTela() {
         initComponents();
     }
 
@@ -249,6 +249,11 @@ public class AlunoTeste extends javax.swing.JFrame {
         jMenu2.setText("Inserir");
 
         jMenuItem8.setText("Insira um novo Aluno na terceira posição");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
@@ -286,6 +291,11 @@ public class AlunoTeste extends javax.swing.JFrame {
         jMenu15.setText("Percorrer toda a lista ");
 
         jMenuItem7.setText("e identificar o aluno mais novo e mais velho");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu15.add(jMenuItem7);
 
         jMenu14.add(jMenu15);
@@ -295,6 +305,11 @@ public class AlunoTeste extends javax.swing.JFrame {
         jMenu13.setText("Remover");
 
         jMenuItem6.setText("Remover o último elemento da lista");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu13.add(jMenuItem6);
 
         jMenuBar1.add(jMenu13);
@@ -329,20 +344,21 @@ public class AlunoTeste extends javax.swing.JFrame {
         String telefone=tdtelefone.getText();
         String cpf=tdcpf.getText();
         
-        JavaBean nc = new JavaBean(matricula,nome,dataN,telefone,cpf);
-        Iterator<JavaBean> Ai = d.alunos.iterator();
+        int validador=0;
         
-        d.cadastrar(nc);   
- 
-        String mat=Ai.next().getMatricula();
-        //System.out.println(mat);
-        //System.out.println(matricula);
-              
-          //System.out.println(mat.equals(matricula));
-          
-            if(matricula.equals(Ai.next().getMatricula())){     
+        JavaBean nc = new JavaBean(matricula,idade,nome,dataN,telefone,cpf);  
+        
+        Iterator<JavaBean> Ai = d.alunos.iterator();             
+        
+        while(Ai.hasNext()&& d.alunos.isEmpty()==false){
+            if( Ai.next().getMatricula().equals(tdmatricula.getText())){
+             validador=1;
+            }            
+        }
+            if(validador==1){     
                 JOptionPane.showMessageDialog(this,"Aluno não Cadastrado!");
             }else{ 
+                d.cadastrar(nc);
                 
                 totalcad.setText(d.numeroDeAlunos());
                 
@@ -353,10 +369,10 @@ public class AlunoTeste extends javax.swing.JFrame {
                 tdmatricula.setText("");
                 tdnome.setText("");
                 tdidade.setText("");
-                tdnascimento.setText("");//não está apagando
-                tdtelefone.setText("");////não está apagando
-                tdcpf.setText("");////não está apagando
-                
+                tdnascimento.setText("");
+                tdtelefone.setText("");
+                tdcpf.setText("");
+                tdidade.setText("");
             }       
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -381,22 +397,92 @@ public class AlunoTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1ComponentMoved
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-       System.out.println(d.alunos.get(2)+" "+d.numeroDeAlunos());       
+       JOptionPane.showMessageDialog(this,"Dados do terceiro aluno: "+d.alunos.get(2)+"\n"
+               +"Numero de alunos: "+d.numeroDeAlunos());       
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         Iterator<JavaBean> Ai = d.alunos.iterator();
-        String cabecinha=Ai.next().getMatricula();
+        String mat;
+        int i = 1;
         
         while(Ai.hasNext()){
-            int i = 0;
+            mat=Ai.next().getMatricula();
             
-            if(i==0 || i==d.alunos.size()-1){
-                System.out.println(cabecinha);      
+            if(i==1 ){
+                JOptionPane.showMessageDialog(this,"Matricula do primeiro aluno: "+ mat );
+            }else if(i==d.alunos.size()){
+                JOptionPane.showMessageDialog(this,"Matricula do ultimo aluno: "+mat);
             }
           i++;
-        }        
+        }
+         
+                          
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+       Iterator<JavaBean> Ai = d.alunos.iterator();
+       int i=1;
+       String mat;
+        while(Ai.hasNext()){ 
+            mat=Ai.next().getMatricula();
+            if(i==d.alunos.size()){
+               Ai.remove(); 
+               JOptionPane.showMessageDialog(this,"Matricula removida: "+mat);
+            }
+          i++;
+        }
+        totalcad.setText(d.numeroDeAlunos());
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        if(d.alunos.size()<3){
+            JOptionPane.showMessageDialog(this,"Contém poucos alunos cadastrados!");
+        }else{
+            JOptionPane.showMessageDialog(this,"Digite o novo aluno para posição 3:");
+            String matricula=JOptionPane.showInputDialog("Matricula:");        
+            String nome=JOptionPane.showInputDialog("nome:"); 
+            int idade=Integer.parseInt(JOptionPane.showInputDialog("idade:"));
+            String dataN=JOptionPane.showInputDialog("Data de nascimento:");
+            String telefone=JOptionPane.showInputDialog("telefone:");
+            String cpf=JOptionPane.showInputDialog("cpf:");
+            
+            JavaBean nc = new JavaBean(matricula,idade,nome,dataN,telefone,cpf);
+            Iterator<JavaBean> Ai = d.alunos.iterator();
+           int i=1;
+
+            while(Ai.hasNext()){    
+                JavaBean jb = Ai.next();
+                if(i==3){ 
+                    Ai.remove();
+                    d.cadastrar(nc);
+                }
+              i++;
+         }
+        }
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+          int count=0;
+        JavaBean maiorIdade = null, menorIdade = null;
+for(JavaBean aluno : d.alunos){
+            if(count == 0){
+                maiorIdade = aluno;
+                menorIdade = aluno;
+                count ++;
+            } 
+            if(aluno.getIdade() > maiorIdade.getIdade()){
+                maiorIdade = aluno;
+            }
+            if(aluno.getIdade() < menorIdade.getIdade()){
+                menorIdade = aluno;
+            }
+        }
+   JOptionPane.showMessageDialog(null,"Aluno mais velho: "+maiorIdade.getNome()
+                +", idade: "+maiorIdade.getIdade()+"\n"
+                +"Aluno mais novo: "+menorIdade.getNome()
+                +", idade: "+menorIdade.getIdade());
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -415,20 +501,21 @@ public class AlunoTeste extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlunoTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlunoTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlunoTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlunoTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlunoTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlunoTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlunoTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlunoTela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AlunoTeste().setVisible(true);
+                new AlunoTela().setVisible(true);
             }
         });
     }
