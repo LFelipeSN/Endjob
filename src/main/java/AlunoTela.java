@@ -52,6 +52,9 @@ public class AlunoTela extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tdtelefone = new javax.swing.JFormattedTextField();
         tdcpf = new javax.swing.JFormattedTextField();
+        painelLateral = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
@@ -75,6 +78,7 @@ public class AlunoTela extends javax.swing.JFrame {
         setTitle("CadastroAlunos");
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(43, 45, 66));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentMoved(java.awt.event.ComponentEvent evt) {
@@ -82,8 +86,13 @@ public class AlunoTela extends javax.swing.JFrame {
             }
         });
 
+        txtMatricula.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        txtMatricula.setForeground(new java.awt.Color(253, 250, 236));
         txtMatricula.setText("Matricula:");
 
+        jButton1.setBackground(new java.awt.Color(43, 45, 66));
+        jButton1.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,14 +100,24 @@ public class AlunoTela extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(253, 250, 236));
         jLabel2.setText("Nome:");
 
+        jLabel3.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(253, 250, 236));
         jLabel3.setText("Idade:");
 
+        jLabel4.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(253, 250, 236));
         jLabel4.setText("DataNascimento:");
 
+        jLabel5.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(253, 250, 236));
         jLabel5.setText("Telefone:");
 
+        jLabel6.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(253, 250, 236));
         jLabel6.setText("Cpf: ");
 
         tdmatricula.addContainerListener(new java.awt.event.ContainerAdapter() {
@@ -118,6 +137,12 @@ public class AlunoTela extends javax.swing.JFrame {
             }
         });
 
+        tdidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tdidadeActionPerformed(evt);
+            }
+        });
+
         try {
             tdnascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -129,8 +154,11 @@ public class AlunoTela extends javax.swing.JFrame {
             }
         });
 
+        totalcad.setForeground(new java.awt.Color(253, 250, 236));
         totalcad.setText("0");
 
+        jLabel1.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(253, 250, 236));
         jLabel1.setText("Total de alunos Cadastrados:");
 
         try {
@@ -150,95 +178,133 @@ public class AlunoTela extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        painelLateral.setBackground(new java.awt.Color(253, 250, 236));
+
+        jLabel7.setFont(new java.awt.Font("Lucida Console", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(43, 45, 66));
+        jLabel7.setText("REGISTROS");
+
+        jLabel8.setFont(new java.awt.Font("Lucida Console", 1, 22)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(43, 45, 66));
+        jLabel8.setText("SISTEMA DE");
+
+        javax.swing.GroupLayout painelLateralLayout = new javax.swing.GroupLayout(painelLateral);
+        painelLateral.setLayout(painelLateralLayout);
+        painelLateralLayout.setHorizontalGroup(
+            painelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelLateralLayout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addGroup(painelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
+        );
+        painelLateralLayout.setVerticalGroup(
+            painelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelLateralLayout.createSequentialGroup()
+                .addGap(222, 222, 222)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tdtelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
-                            .addComponent(tdcpf)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(tdnascimento))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(33, 33, 33)
-                            .addComponent(tdidade))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(txtMatricula)
-                            .addGap(18, 18, 18)
-                            .addComponent(tdmatricula))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(34, 34, 34)
-                            .addComponent(tdnome, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(totalcad, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtMatricula))
+                                .addGap(58, 58, 58)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tdtelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                    .addComponent(tdnascimento)
+                                    .addComponent(tdidade)
+                                    .addComponent(tdnome)
+                                    .addComponent(tdmatricula)
+                                    .addComponent(tdcpf)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(totalcad, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(165, 165, 165)
+                .addComponent(painelLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMatricula)
-                    .addComponent(tdmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tdnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(txtMatricula))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tdmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tdnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tdidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tdnascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tdnascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(tdtelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tdtelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(tdcpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(totalcad)
-                    .addComponent(jLabel1))
-                .addContainerGap())
+                    .addComponent(jLabel1)
+                    .addComponent(totalcad))
+                .addGap(38, 38, 38))
+            .addComponent(painelLateral, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jMenuBar1.setBackground(new java.awt.Color(43, 45, 66));
+        jMenuBar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
+
         jMenu1.setText("Criar");
+        jMenu1.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
 
         jMenu7.setText("Crie um objeto da classe Aluno... ");
+        jMenu7.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
 
+        jMenuItem1.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jMenuItem1.setText("e verifique se já está na lista");
         jMenu7.add(jMenuItem1);
 
         jMenu1.add(jMenu7);
 
         jMenu3.setText("Cria a documentação usando... ");
+        jMenu3.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
 
+        jMenuItem9.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jMenuItem9.setText("o Java doc de pelo menos uma classe do seu programa");
         jMenu3.add(jMenuItem9);
 
@@ -247,7 +313,9 @@ public class AlunoTela extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Inserir");
+        jMenu2.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
 
+        jMenuItem8.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jMenuItem8.setText("Insira um novo Aluno na terceira posição");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,9 +327,12 @@ public class AlunoTela extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu10.setText("Obter");
+        jMenu10.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
 
         jMenu11.setText("Obter 3°elemento");
+        jMenu11.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
 
+        jMenuItem5.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jMenuItem5.setText("e imprimir a quantidade de elementos da lista");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,7 +344,9 @@ public class AlunoTela extends javax.swing.JFrame {
         jMenu10.add(jMenu11);
 
         jMenu12.setText("Obter a matricula ");
+        jMenu12.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
 
+        jMenuItem3.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jMenuItem3.setText("do primeiro e ultimo elemento da lista");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,9 +360,12 @@ public class AlunoTela extends javax.swing.JFrame {
         jMenuBar1.add(jMenu10);
 
         jMenu14.setText("Percorrer");
+        jMenu14.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
 
         jMenu15.setText("Percorrer toda a lista ");
+        jMenu15.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
 
+        jMenuItem7.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jMenuItem7.setText("e identificar o aluno mais novo e mais velho");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,8 +378,11 @@ public class AlunoTela extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu14);
 
+        jMenu13.setBackground(new java.awt.Color(43, 45, 66));
         jMenu13.setText("Remover");
+        jMenu13.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
 
+        jMenuItem6.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jMenuItem6.setText("Remover o último elemento da lista");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,13 +399,13 @@ public class AlunoTela extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -484,6 +563,10 @@ for(JavaBean aluno : d.alunos){
                 +", idade: "+menorIdade.getIdade());
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void tdidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tdidadeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -529,6 +612,8 @@ for(JavaBean aluno : d.alunos){
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
@@ -548,6 +633,7 @@ for(JavaBean aluno : d.alunos){
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel painelLateral;
     private javax.swing.JFormattedTextField tdcpf;
     private javax.swing.JTextField tdidade;
     private javax.swing.JTextField tdmatricula;
