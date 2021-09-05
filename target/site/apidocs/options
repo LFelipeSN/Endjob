@@ -1,0 +1,26 @@
+-classpath
+'C:/Users/Hanna/.m2/repository/unknown/binary/AbsoluteLayout/SNAPSHOT/AbsoluteLayout-SNAPSHOT.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'11'
+-sourcepath
+'C:/Users/Hanna/Documents/Endjob-master (1)/TRABALHO FINAL/Endjob/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2021. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Hanna/Documents/Endjob-master (1)/TRABALHO FINAL/Endjob/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'TesteMiau 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/en/java/javase/11/docs/api' 'C:/Users/Hanna/Documents/Endjob-master (1)/TRABALHO FINAL/Endjob/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'TesteMiau 1.0-SNAPSHOT API'
