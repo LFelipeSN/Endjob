@@ -3,7 +3,7 @@
 * @version 1.00
 * @since Release 01 da aplicação
 */
-public class JavaBean {  
+public class Alunos {  
     private String matricula;
     private String nome;
     private String dataN;
@@ -20,13 +20,17 @@ public class JavaBean {
 @param idade - idade do aluno
 */
     
-    public JavaBean(String matricula,int idade ,String nome, String dataN, String telefone, String cpf) {
+    public Alunos(String matricula,int idade ,String nome, String dataN, String telefone, String cpf) {
         this.matricula = matricula;
         this.nome = nome;
         this.dataN = dataN;
         this.telefone = telefone;
         this.cpf = cpf;
         this.idade=idade;
+    }
+    
+    public Alunos(){
+        
     }
     
 /** Método para retorno da matricula do aluno

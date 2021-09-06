@@ -1,6 +1,7 @@
 
 
 import java.util.Iterator;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 
 
@@ -59,8 +60,6 @@ public class AlunoTela extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
@@ -148,6 +147,11 @@ public class AlunoTela extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        tdnascimento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tdnascimentoFocusLost(evt);
+            }
+        });
         tdnascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tdnascimentoActionPerformed(evt);
@@ -166,6 +170,11 @@ public class AlunoTela extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        tdtelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tdtelefoneFocusLost(evt);
+            }
+        });
         tdtelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tdtelefoneActionPerformed(evt);
@@ -177,6 +186,11 @@ public class AlunoTela extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        tdcpf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tdcpfFocusLost(evt);
+            }
+        });
 
         painelLateral.setBackground(new java.awt.Color(253, 250, 236));
 
@@ -268,11 +282,11 @@ public class AlunoTela extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tdnascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tdtelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(24, 24, 24)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(tdtelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(tdcpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -297,18 +311,14 @@ public class AlunoTela extends javax.swing.JFrame {
 
         jMenuItem1.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         jMenuItem1.setText("e verifique se já está na lista");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem1);
 
         jMenu1.add(jMenu7);
-
-        jMenu3.setText("Cria a documentação usando... ");
-        jMenu3.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-
-        jMenuItem9.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        jMenuItem9.setText("o Java doc de pelo menos uma classe do seu programa");
-        jMenu3.add(jMenuItem9);
-
-        jMenu1.add(jMenu3);
 
         jMenuBar1.add(jMenu1);
 
@@ -416,43 +426,48 @@ public class AlunoTela extends javax.swing.JFrame {
     }//GEN-LAST:event_tdnomeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String matricula=tdmatricula.getText();
-        String nome=tdnome.getText();
-        int idade=Integer.parseInt(tdidade.getText());
-        String dataN=tdnascimento.getText();
-        String telefone=tdtelefone.getText();
-        String cpf=tdcpf.getText();
-        
-        int validador=0;
-        
-        JavaBean nc = new JavaBean(matricula,idade,nome,dataN,telefone,cpf);  
-        
-        Iterator<JavaBean> Ai = d.alunos.iterator();             
-        
-        while(Ai.hasNext()&& d.alunos.isEmpty()==false){
-            if( Ai.next().getMatricula().equals(tdmatricula.getText())){
-             validador=1;
-            }            
+        if(tdmatricula.getText().trim().isEmpty()==true || tdnome.getText().trim().isEmpty()==true
+                || tdidade.getText().trim().isEmpty()==true|| tdnascimento.getText().equals("  /  /    ")
+                || tdtelefone.getText().equals("+  (  )     -    ") || tdcpf.getText().equals("   .   .   .  ")){
+            JOptionPane.showMessageDialog(this,"Campos vazios!");
+        }else{
+            String matricula=tdmatricula.getText();
+            String nome=tdnome.getText();
+            int idade=Integer.parseInt(tdidade.getText());
+            String dataN=tdnascimento.getText();
+            String telefone=tdtelefone.getText();
+            String cpf=tdcpf.getText();            
+            int validador=0;
+            
+            Alunos nc = new Alunos(matricula,idade,nome,dataN,telefone,cpf);  
+
+            Iterator<Alunos> Ai = d.alunosArray.iterator();             
+
+            while(Ai.hasNext()&& d.alunosArray.isEmpty()==false){
+                if( Ai.next().getMatricula().equals(tdmatricula.getText())){
+                 validador=1;
+                }            
+            }
+                if(validador==1){     
+                    JOptionPane.showMessageDialog(this,"Aluno não Cadastrado!");
+                }else{                 
+                    d.cadastrar(nc);
+
+                    totalcad.setText(d.numeroDeAlunos());
+
+                    System.out.println(nc);
+
+                    JOptionPane.showMessageDialog(this,"Aluno Cadastrado!");
+
+                    tdmatricula.setText("");
+                    tdnome.setText("");
+                    tdidade.setText("");
+                    tdnascimento.setText("");
+                    tdtelefone.setText("");
+                    tdcpf.setText("");
+                    tdidade.setText("");
+                } 
         }
-            if(validador==1){     
-                JOptionPane.showMessageDialog(this,"Aluno não Cadastrado!");
-            }else{ 
-                d.cadastrar(nc);
-                
-                totalcad.setText(d.numeroDeAlunos());
-                
-                System.out.println(nc);
-         
-                JOptionPane.showMessageDialog(this,"Aluno Cadastrado!");
-                
-                tdmatricula.setText("");
-                tdnome.setText("");
-                tdidade.setText("");
-                tdnascimento.setText("");
-                tdtelefone.setText("");
-                tdcpf.setText("");
-                tdidade.setText("");
-            }       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tdmatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdmatriculaActionPerformed
@@ -476,75 +491,105 @@ public class AlunoTela extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1ComponentMoved
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-       JOptionPane.showMessageDialog(this,"Dados do terceiro aluno: "+d.alunos.get(2)+"\n"
-               +"Numero de alunos: "+d.numeroDeAlunos());       
+            if(d.alunosArray.size()<3){
+            JOptionPane.showMessageDialog(this,"Quantidade de alunos insuficientes!");
+        }else{ 
+            JOptionPane.showMessageDialog(this,"Dados do terceiro aluno: "+d.alunosArray.get(2)+"\n"
+                   +"Numero de alunos: "+d.numeroDeAlunos());
+      }     
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        Iterator<JavaBean> Ai = d.alunos.iterator();
-        String mat;
-        int i = 1;
+       
+        if(d.alunosArray.size()<2){            
+           JOptionPane.showMessageDialog(this,"Quantidade de alunos insuficientes!");
+        }else{
+            Iterator<Alunos> Ai = d.alunosArray.iterator();
+            String mat;
+            int i = 1;
         
-        while(Ai.hasNext()){
-            mat=Ai.next().getMatricula();
-            
-            if(i==1 ){
-                JOptionPane.showMessageDialog(this,"Matricula do primeiro aluno: "+ mat );
-            }else if(i==d.alunos.size()){
-                JOptionPane.showMessageDialog(this,"Matricula do ultimo aluno: "+mat);
+            while(Ai.hasNext()){
+                mat=Ai.next().getMatricula();
+
+                if(i==1 ){
+                    JOptionPane.showMessageDialog(this,"Matricula do primeiro aluno: "+ mat );
+                }else if(i==d.alunosArray.size()){
+                    JOptionPane.showMessageDialog(this,"Matricula do ultimo aluno: "+mat);
+                }
+              i++;
             }
-          i++;
-        }
-         
+        } 
                           
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-       Iterator<JavaBean> Ai = d.alunos.iterator();
+        if(d.alunosArray.size()<1){
+            JOptionPane.showMessageDialog(this,"Quantidade de alunos insuficientes!");
+        }else{
+        Iterator<Alunos> Ai = d.alunosArray.iterator();
        int i=1;
        String mat;
         while(Ai.hasNext()){ 
             mat=Ai.next().getMatricula();
-            if(i==d.alunos.size()){
+            if(i==d.alunosArray.size()){
                Ai.remove(); 
                JOptionPane.showMessageDialog(this,"Matricula removida: "+mat);
             }
           i++;
         }
         totalcad.setText(d.numeroDeAlunos());
+       }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        if(d.alunos.size()<3){
-            JOptionPane.showMessageDialog(this,"Contém poucos alunos cadastrados!");
+       if(d.alunosArray.size()<3){
+            JOptionPane.showMessageDialog(this,"Quantidade de alunos insuficientes!");
         }else{
             JOptionPane.showMessageDialog(this,"Digite o novo aluno para posição 3:");
             String matricula=JOptionPane.showInputDialog("Matricula:");        
             String nome=JOptionPane.showInputDialog("nome:"); 
             int idade=Integer.parseInt(JOptionPane.showInputDialog("idade:"));
-            String dataN=JOptionPane.showInputDialog("Data de nascimento:");
-            String telefone=JOptionPane.showInputDialog("telefone:");
-            String cpf=JOptionPane.showInputDialog("cpf:");
+            String dataN=JOptionPane.showInputDialog("Data de nascimento:","**/**/****");
+            String telefone=JOptionPane.showInputDialog("telefone:","+**(**)*****-****");
+            String cpf=JOptionPane.showInputDialog("cpf:","***.***.***");
             
-            JavaBean nc = new JavaBean(matricula,idade,nome,dataN,telefone,cpf);
-            Iterator<JavaBean> Ai = d.alunos.iterator();
-           int i=1;
+            Cadastros cad = new Cadastros();
+            
+            if(cad.formataData(dataN) == null || cad.formataCpf(cpf) == null 
+                    || cad.formataTelefone(telefone) == null){
+                JOptionPane.showMessageDialog(this,"Dados incorretos para serem inseridos!");
+               
+            }else{  
+                dataN=cad.formataData(dataN);
+                cpf=cad.formataCpf(cpf);
+                telefone=cad.formataTelefone(telefone);
 
-            while(Ai.hasNext()){    
-                JavaBean jb = Ai.next();
-                if(i==3){ 
-                    Ai.remove();
-                    d.cadastrar(nc);
-                }
-              i++;
-         }
+               Alunos nc = new Alunos(matricula,idade,nome,dataN,telefone,cpf);
+               Iterator<Alunos> Ai = d.alunosArray.iterator();
+               int validador=0;
+
+               while(Ai.hasNext()){
+                   if( Ai.next().getMatricula().equals(matricula)){
+                    validador=1;
+                   }            
+                }        
+               if(validador==1){
+                   JOptionPane.showMessageDialog(this,"Matricula já existente!");
+               }else{   
+                   d.alunosArray.set(2,nc);     
+               }
+            }
         }
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-          int count=0;
-        JavaBean maiorIdade = null, menorIdade = null;
-for(JavaBean aluno : d.alunos){
+        if(d.alunosArray.size()<2){
+            JOptionPane.showMessageDialog(this,"Quantidade de alunos insuficientes!");
+        }else{ 
+        
+        int count=0;
+        Alunos maiorIdade = null, menorIdade = null;
+for(Alunos aluno : d.alunosArray){
             if(count == 0){
                 maiorIdade = aluno;
                 menorIdade = aluno;
@@ -561,11 +606,46 @@ for(JavaBean aluno : d.alunos){
                 +", idade: "+maiorIdade.getIdade()+"\n"
                 +"Aluno mais novo: "+menorIdade.getNome()
                 +", idade: "+menorIdade.getIdade());
+        }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void tdidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tdidadeActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       if(d.alunosArray.size()<1){
+            JOptionPane.showMessageDialog(this,"Quantidade de alunos insuficientes!");
+        }else{
+            //String matricula=JOptionPane.showInputDialog("Digite a Matricula:");        
+            String nome=JOptionPane.showInputDialog("Digite o nome:"); 
+            //int idade=Integer.parseInt(JOptionPane.showInputDialog("Digite a idade:"));
+            //String dataN=JOptionPane.showInputDialog("Data de nascimento:","**/**/****");
+            //String telefone=JOptionPane.showInputDialog("telefone:","+**(**)*****-****");
+           //String cpf=JOptionPane.showInputDialog("cpf:","***.***.***");
+            
+            Iterator<Alunos> Ai = d.alunosArray.iterator();
+            
+            if(Ai.next().getNome().equals(nome)){
+                JOptionPane.showMessageDialog(this,"Aluno já está na lista!");
+            }else{
+                JOptionPane.showMessageDialog(this,"Nenhum aluno com esses dados foi encontrado!");
+            }
+        }
+      // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void tdcpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tdcpfFocusLost
+        tdcpf.setFocusLostBehavior(JFormattedTextField.COMMIT);
+    }//GEN-LAST:event_tdcpfFocusLost
+
+    private void tdtelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tdtelefoneFocusLost
+        tdtelefone.setFocusLostBehavior(JFormattedTextField.COMMIT);
+    }//GEN-LAST:event_tdtelefoneFocusLost
+
+    private void tdnascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tdnascimentoFocusLost
+        tdnascimento.setFocusLostBehavior(JFormattedTextField.COMMIT);
+    }//GEN-LAST:event_tdnascimentoFocusLost
 
     /**
      * @param args the command line arguments
@@ -622,7 +702,6 @@ for(JavaBean aluno : d.alunos){
     private javax.swing.JMenu jMenu14;
     private javax.swing.JMenu jMenu15;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -631,7 +710,6 @@ for(JavaBean aluno : d.alunos){
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel painelLateral;
     private javax.swing.JFormattedTextField tdcpf;
