@@ -1,3 +1,5 @@
+package Questão1;
+
 /**Classe para objetos do tipo Cadastros, onde serão contidos, valores e métodos para o mesmo.
 * @author Luiz Felipe,Tamara Silva,Hanna Gaby
 * @version 1.00
@@ -5,6 +7,7 @@
 */
 
 
+import JavaBean.Alunos;
 import java.util.ArrayList;
 public class Cadastros {
     

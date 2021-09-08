@@ -1,3 +1,5 @@
+package JavaBean;
+
 /**Classe para objetos do tipo JavaBean, onde serão contidos, valores e métodos para o mesmo.
 * @author Luiz Felipe,Tamara Silva,Hanna Gaby
 * @version 1.00
@@ -20,7 +22,7 @@ public class Alunos {
 @param idade - idade do aluno
 */
     
-    public Alunos(String matricula,int idade ,String nome, String dataN, String telefone, String cpf) {
+    public Alunos(String matricula,int idade ,String nome,String dataN, String telefone, String cpf) {
         this.matricula = matricula;
         this.nome = nome;
         this.dataN = dataN;
