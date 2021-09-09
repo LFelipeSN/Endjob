@@ -39,7 +39,6 @@ public class AlunoTela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cadastros2 = new Cadastros();
         jPanel1 = new javax.swing.JPanel();
         txtMatricula = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -437,12 +436,12 @@ public class AlunoTela extends javax.swing.JFrame {
             String matricula=tdmatricula.getText();
             String nome=tdnome.getText();
             int idade=Integer.parseInt(tdidade.getText());
-            String dataN=tdnascimento.getText();
+            String dataNascimento=tdnascimento.getText();
             String telefone=tdtelefone.getText();
             String cpf=tdcpf.getText();            
             int validador=0;
             
-            Alunos nc = new Alunos(matricula,idade,nome,dataN,telefone,cpf);  
+            Alunos nc = new Alunos(matricula,idade,nome,dataNascimento,telefone,cpf);  
 
             Iterator<Alunos> Ai = d.alunosArray.iterator();             
 
@@ -687,7 +686,6 @@ for(Alunos aluno : d.alunosArray){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Cadastros cadastros2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

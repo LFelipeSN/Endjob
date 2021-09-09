@@ -17,7 +17,7 @@ public class TestaCSV1 {
     public static void main(String[] args) throws IOException, ParseException {
         List<Alunos> list = new ArrayList <>();
         // Obs.: arquivo movido para outra pasta e aparentemente o path completo não era necessário.
-        CSVFile1 file = new CSVFile1("src\\csvAlunos.csv");
+        CSVFile1 file = new CSVFile1("src\\ListagemAlunos.txt.csv");
         //DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         
         list = file.toList();
@@ -29,14 +29,15 @@ public class TestaCSV1 {
         *   preciso salvar o Objeto em uma variável auxiliar.
         */
         Iterator<Alunos> iterator = list.iterator();
+        /*
         while (iterator.hasNext()) {
             System.out.println("Aluno: "+iterator.next().getNome());
         }
         System.out.println("");
-        
+        */
         Alunos a1 = new Alunos();
         a1.setMatricula("3");
-        a1.setNome("Aluno adicionado1");
+        a1.setNome("Ana");
         a1.setIdade(23);
         a1.setDataN("26/07/1998");
         a1.setTelefone("(99)1234-5678");
@@ -49,7 +50,7 @@ public class TestaCSV1 {
             System.out.println("Aluno: "+iterator.next().getNome());
         }
         System.out.println("");
-        
+        /*
         Alunos a2 = new Alunos();
         a2.setMatricula("4");
         a2.setNome("Aluno adicionado2");
@@ -72,5 +73,8 @@ public class TestaCSV1 {
         while (iterator.hasNext()) {
             System.out.println("Aluno: "+iterator.next().getNome());
         }
+    */
     }
 }
+/*podemos colocar um scanner pro usuario inserir os dados do aluno que vai ser
+adicionado(porém vai dar um pouco de trabalho ter que validar tudo que for digitado*/

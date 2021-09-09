@@ -8,7 +8,7 @@ package JavaBean;
 public class Alunos {  
     private String matricula;
     private String nome;
-    private String dataN;
+    private String dataNascimento;
     private String telefone;
     private String cpf;
     private int idade;
@@ -22,10 +22,10 @@ public class Alunos {
 @param idade - idade do aluno
 */
     
-    public Alunos(String matricula,int idade ,String nome,String dataN, String telefone, String cpf) {
+    public Alunos(String matricula,int idade ,String nome,String dataNascimento, String telefone, String cpf) {
         this.matricula = matricula;
         this.nome = nome;
-        this.dataN = dataN;
+        this.dataNascimento = dataNascimento;
         this.telefone = telefone;
         this.cpf = cpf;
         this.idade=idade;
@@ -67,14 +67,14 @@ public class Alunos {
 * @return String - Data de nascimento*/  
     
     public String getDataN() {
-        return dataN;
+        return dataNascimento;
     }
 
     /** Método para Alterar data de nascimento do aluno
 * @param dataN */
     
-    public void setDataN(String dataN) {
-        this.dataN = dataN;
+    public void setDataN(String dataNascimento) {
+        this.dataNascimento= dataNascimento;
     }
 
     /** Método para retorno do numero de telefone  do aluno
@@ -123,7 +123,7 @@ public class Alunos {
     
     @Override
     public String toString() {
-        return matricula +" "+ nome+" "+idade+" "+dataN+" "+ telefone +" "+ cpf; 
+        return matricula +" "+ nome+" "+idade+" "+dataNascimento+" "+ telefone +" "+ cpf; 
     }
     
 }
