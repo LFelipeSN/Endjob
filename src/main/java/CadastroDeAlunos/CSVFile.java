@@ -1,19 +1,23 @@
-package Questão2;
+package CadastroDeAlunos;
 
 import JavaBean.Alunos;
 import java.io.*;
-//import java.text.DateFormat;
 import java.text.ParseException;
-//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CSVFile1 {
+/**Classe para gerar o arquivo CSV, onde serão contidos, valores e métodos para o mesmo.
+* @author Luiz Felipe,Tamara Silva,Hanna Gaby
+* @version 1.00
+* @since Release 01 da aplicação
+*/
+
+public class CSVFile {
     private final String path;//endereço do arquivo
     
-    public CSVFile1(String path){
+    public CSVFile(String path){
         this.path = path;
     }
     
@@ -37,7 +41,6 @@ public class CSVFile1 {
         try(BufferedReader reader = new BufferedReader(new FileReader(path))){
             reader.readLine();
             while((linha = reader.readLine()) != null){
-                //DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 String[] values= linha.split(",");
                 Alunos a = new Alunos();
                 a.setMatricula(values[0]);
@@ -49,9 +52,9 @@ public class CSVFile1 {
                 list.add(a);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(CSVFile1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CSVFile.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(CSVFile1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CSVFile.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -68,7 +71,6 @@ public class CSVFile1 {
     *   para String, exemplo: Mon May 20 00:00:00 BRT 1996 -> 20/05/1996.
     */
     public void update(List<Alunos> list) {
-        //DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         try(FileWriter writer = new FileWriter(path)){
             writer.write("matricula,nome,idade,dataNascimento,telefone,cpf\n");
             for(Alunos a: list){
@@ -81,7 +83,7 @@ public class CSVFile1 {
             
             }
         } catch (IOException ex) {
-            Logger.getLogger(CSVFile1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CSVFile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

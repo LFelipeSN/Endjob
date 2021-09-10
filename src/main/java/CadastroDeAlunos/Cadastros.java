@@ -1,32 +1,34 @@
-package Questão1;
+package CadastroDeAlunos;
+
+import JavaBean.Alunos;
+import java.util.ArrayList;
 
 /**Classe para objetos do tipo Cadastros, onde serão contidos, valores e métodos para o mesmo.
 * @author Luiz Felipe,Tamara Silva,Hanna Gaby
 * @version 1.00
 * @since Release 01 da aplicação
 */
-
-
-import JavaBean.Alunos;
-import java.util.ArrayList;
 public class Cadastros {
     
     ArrayList<Alunos> alunosArray = new ArrayList();   
     
-  /** Método para receber os dados do aluno e cadastrar na array
-@param  cad - array do tipo Alunos com todos os dados do aluno*/  
+    /** Método para receber os dados do aluno e cadastrar na array
+    @param  cad - array do tipo Alunos com todos os dados do aluno*/  
     
     public void cadastrar(Alunos cad){
         alunosArray.add(cad);
     }
     
-   /** Método para retornar o numero de alunos cadastrados
-@return String - o numero de alunos já convertido em string*/  
+    /** Método para retornar o numero de alunos cadastrados
+    @return String - o numero de alunos já convertido em string*/  
     
     public String numeroDeAlunos(){
         return alunosArray.size() + "";
     }
-    
+    /**Método para formatar a data inserida e dd/mm/yyyy
+     * @param data - Data de nascimento do aluno
+     * @return String - a data já formatada
+     */
     
     public String formataData(String data) {
         if(data.length() == 8){
@@ -38,6 +40,10 @@ public class Cadastros {
             return null;
         }
     }
+    /**Método para formatar o cpf para XXX.XXX.XXX.XX
+     * @param cpf - cpf do aluno
+     * @return String - cpf já formatado
+     */
     
     public String formataCpf(String cpf) {
         if(cpf.length() == 11){
@@ -49,8 +55,12 @@ public class Cadastros {
         } else {
             return null;
         }
-    }
+    }    
     
+    /**Método para formatar o cpf para XXX.XXX.XXX.XX
+     * @param telefone - telefone do aluno
+     * @return String - telefone já formatado
+     */
     public String formataTelefone(String telefone) {
         if(telefone.length() == 13){
             return String.format("%c%s%c%s%c%s%c%s", '+', telefone.substring(0, 2), '('

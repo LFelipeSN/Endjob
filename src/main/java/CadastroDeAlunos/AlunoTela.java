@@ -1,9 +1,12 @@
-package Questão1;
-
-
+package CadastroDeAlunos;
 
 import JavaBean.Alunos;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 
@@ -15,9 +18,9 @@ import javax.swing.JOptionPane;
  */
 
 
-/**
- *
- * @author Win10
+/**Classe para tela com elementos Swing como menu.button.jpanel.
+ * @version 1.00
+ * @since realese 01 da aplicação
  */
 public class AlunoTela extends javax.swing.JFrame {    
     Cadastros d = new Cadastros();
@@ -58,6 +61,8 @@ public class AlunoTela extends javax.swing.JFrame {
         painelLateral = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        tdTotalcsv = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
@@ -74,6 +79,11 @@ public class AlunoTela extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu13 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CadastroAlunos");
@@ -225,6 +235,13 @@ public class AlunoTela extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel9.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Alunos salvos em .CSV :");
+
+        tdTotalcsv.setForeground(new java.awt.Color(255, 255, 255));
+        tdTotalcsv.setText("--");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -232,13 +249,12 @@ public class AlunoTela extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(totalcad, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
@@ -254,10 +270,18 @@ public class AlunoTela extends javax.swing.JFrame {
                                     .addComponent(tdidade)
                                     .addComponent(tdnome)
                                     .addComponent(tdmatricula)
-                                    .addComponent(tdcpf)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(tdcpf)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(totalcad, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tdTotalcsv, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(165, 165, 165)
                 .addComponent(painelLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -292,13 +316,17 @@ public class AlunoTela extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(tdcpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(totalcad))
-                .addGap(38, 38, 38))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(tdTotalcsv))
+                .addGap(32, 32, 32))
             .addComponent(painelLateral, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -405,6 +433,43 @@ public class AlunoTela extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu13);
 
+        jMenu3.setText("CSV");
+        jMenu3.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+
+        jMenu4.setText("Cadastrar ");
+        jMenu4.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+
+        jMenuItem4.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        jMenuItem4.setText("um usuario em .CSV");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem4);
+
+        jMenu3.add(jMenu4);
+
+        jMenuItem2.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        jMenuItem2.setText("Imprimir todos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
+        jMenuItem9.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        jMenuItem9.setText("Limpar lista");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem9);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -422,75 +487,6 @@ public class AlunoTela extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tdnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdnomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tdnomeActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(tdmatricula.getText().trim().isEmpty()==true || tdnome.getText().trim().isEmpty()==true
-                || tdidade.getText().trim().isEmpty()==true|| tdnascimento.getText().equals("  /  /    ")
-                || tdtelefone.getText().equals("+  (  )     -    ") || tdcpf.getText().equals("   .   .   .  ")){
-            JOptionPane.showMessageDialog(this,"Campos vazios!");
-        }else{
-            String matricula=tdmatricula.getText();
-            String nome=tdnome.getText();
-            int idade=Integer.parseInt(tdidade.getText());
-            String dataNascimento=tdnascimento.getText();
-            String telefone=tdtelefone.getText();
-            String cpf=tdcpf.getText();            
-            int validador=0;
-            
-            Alunos nc = new Alunos(matricula,idade,nome,dataNascimento,telefone,cpf);  
-
-            Iterator<Alunos> Ai = d.alunosArray.iterator();             
-
-            while(Ai.hasNext()&& d.alunosArray.isEmpty()==false){
-                if( Ai.next().getMatricula().equals(tdmatricula.getText())){
-                 validador=1;
-                }            
-            }
-                if(validador==1){     
-                    JOptionPane.showMessageDialog(this,"Aluno não Cadastrado!");
-                }else{                 
-                    d.cadastrar(nc);
-
-                    totalcad.setText(d.numeroDeAlunos());
-
-                    System.out.println(nc);
-
-                    JOptionPane.showMessageDialog(this,"Aluno Cadastrado!");
-
-                    tdmatricula.setText("");
-                    tdnome.setText("");
-                    tdidade.setText("");
-                    tdnascimento.setText("");
-                    tdtelefone.setText("");
-                    tdcpf.setText("");
-                    tdidade.setText("");
-                } 
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void tdmatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdmatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tdmatriculaActionPerformed
-
-    private void tdmatriculaComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tdmatriculaComponentAdded
-        
-    }//GEN-LAST:event_tdmatriculaComponentAdded
-
-    private void tdnascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdnascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tdnascimentoActionPerformed
-
-    private void tdtelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdtelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tdtelefoneActionPerformed
-
-    private void jPanel1ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel1ComponentMoved
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
             if(d.alunosArray.size()<3){
@@ -611,10 +607,6 @@ for(Alunos aluno : d.alunosArray){
         }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void tdidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tdidadeActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
        if(d.alunosArray.size()<1){
             JOptionPane.showMessageDialog(this,"Quantidade de alunos insuficientes!");
@@ -637,17 +629,171 @@ for(Alunos aluno : d.alunosArray){
       // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+         List<Alunos> list = new ArrayList <>();
+                     
+                    CSVFile file = new CSVFile("src\\ListagemAlunos.txt.csv");
+                    
+                    try{
+                    list = file.toList();
+                    }catch(ParseException ex){
+                    Logger.getLogger(AlunoTela.class.getName()).log(Level.SEVERE,null,ex);
+                    }
+                    
+                    JOptionPane.showMessageDialog(this,"Digite os dados a seguir :");
+                    String matricula=JOptionPane.showInputDialog("Matricula:");        
+                    String nome=JOptionPane.showInputDialog("nome:"); 
+                    int idade=Integer.parseInt(JOptionPane.showInputDialog("idade:"));
+                    String dataN=JOptionPane.showInputDialog("Data de nascimento:","**/**/****");
+                    String telefone=JOptionPane.showInputDialog("telefone:","+**(**)*****-****");
+                    String cpf=JOptionPane.showInputDialog("cpf:","***.***.***");
+                    Cadastros cad = new Cadastros();
+                    
+                    if(cad.formataData(dataN) == null || cad.formataCpf(cpf) == null 
+                    || cad.formataTelefone(telefone) == null){
+                    JOptionPane.showMessageDialog(this,"Dados incorretos para serem inseridos!");
+               
+                    }else{  
+                    
+                    Iterator<Alunos> iterator = list.iterator();
+                   
+                    Alunos a1 = new Alunos();
+                    a1.setMatricula(matricula);
+                    a1.setNome(nome);
+                    a1.setIdade(idade);
+                    a1.setDataN(dataN);
+                    a1.setTelefone(telefone);
+                    a1.setCpf(cpf);
+                    
+                    list.add(a1);
+                    file.update(list);
+                    iterator = list.iterator();         
+                    JOptionPane.showMessageDialog(this,"Dados cadastrados!");         
+                    }  
+                    tdTotalcsv.setText(list.size()+"");
+                    
+                    
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+         List<Alunos> list = new ArrayList <>();
+         CSVFile file = new CSVFile("src\\ListagemAlunos.txt.csv");
+        try{
+            list = file.toList();
+        }catch(ParseException ex){
+            Logger.getLogger(AlunoTela.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        Iterator<Alunos> iterator = list.iterator();
+        if(list.isEmpty()==true){
+           JOptionPane.showMessageDialog(this,"Lista vazia!");
+        }else{
+            while (iterator.hasNext()) {
+                System.out.println("Aluno: "+iterator.next().getNome());
+            }
+        }        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        List<Alunos> list = new ArrayList <>();
+        CSVFile file = new CSVFile("src\\ListagemAlunos.txt.csv");
+          try{
+            list = file.toList();
+        }catch(ParseException ex){
+            Logger.getLogger(AlunoTela.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        list.clear();
+        file.update(list);  
+        JOptionPane.showMessageDialog(this,"Lista limpa!");
+        tdTotalcsv.setText(list.size()+"");
+             
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jPanel1ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1ComponentMoved
+
     private void tdcpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tdcpfFocusLost
         tdcpf.setFocusLostBehavior(JFormattedTextField.COMMIT);
     }//GEN-LAST:event_tdcpfFocusLost
+
+    private void tdtelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdtelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tdtelefoneActionPerformed
 
     private void tdtelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tdtelefoneFocusLost
         tdtelefone.setFocusLostBehavior(JFormattedTextField.COMMIT);
     }//GEN-LAST:event_tdtelefoneFocusLost
 
+    private void tdnascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdnascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tdnascimentoActionPerformed
+
     private void tdnascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tdnascimentoFocusLost
         tdnascimento.setFocusLostBehavior(JFormattedTextField.COMMIT);
     }//GEN-LAST:event_tdnascimentoFocusLost
+
+    private void tdidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tdidadeActionPerformed
+
+    private void tdnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdnomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tdnomeActionPerformed
+
+    private void tdmatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tdmatriculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tdmatriculaActionPerformed
+
+    private void tdmatriculaComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tdmatriculaComponentAdded
+
+    }//GEN-LAST:event_tdmatriculaComponentAdded
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(tdmatricula.getText().trim().isEmpty()==true || tdnome.getText().trim().isEmpty()==true
+            || tdidade.getText().trim().isEmpty()==true|| tdnascimento.getText().equals("  /  /    ")
+            || tdtelefone.getText().equals("+  (  )     -    ") || tdcpf.getText().equals("   .   .   .  ")){
+            JOptionPane.showMessageDialog(this,"Campos vazios!");
+        }else{
+            String matricula=tdmatricula.getText();
+            String nome=tdnome.getText();
+            int idade=Integer.parseInt(tdidade.getText());
+            String dataNascimento=tdnascimento.getText();
+            String telefone=tdtelefone.getText();
+            String cpf=tdcpf.getText();
+            int validador=0;
+
+            Alunos nc = new Alunos(matricula,idade,nome,dataNascimento,telefone,cpf);
+
+            Iterator<Alunos> Ai = d.alunosArray.iterator();
+
+            while(Ai.hasNext()&& d.alunosArray.isEmpty()==false){
+                if( Ai.next().getMatricula().equals(tdmatricula.getText())){
+                    validador=1;
+                }
+            }
+            if(validador==1){
+                JOptionPane.showMessageDialog(this,"Aluno não Cadastrado!");
+            }else{
+                d.cadastrar(nc);
+
+                totalcad.setText(d.numeroDeAlunos());
+
+                System.out.println(nc);
+
+                JOptionPane.showMessageDialog(this,"Aluno Cadastrado!");
+
+                System.out.println("");
+
+                tdmatricula.setText("");
+                tdnome.setText("");
+                tdidade.setText("");
+                tdnascimento.setText("");
+                tdtelefone.setText("");
+                tdcpf.setText("");
+                tdidade.setText("");
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -695,6 +841,7 @@ for(Alunos aluno : d.alunosArray){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
@@ -703,16 +850,22 @@ for(Alunos aluno : d.alunosArray){
     private javax.swing.JMenu jMenu14;
     private javax.swing.JMenu jMenu15;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel painelLateral;
+    private javax.swing.JLabel tdTotalcsv;
     private javax.swing.JFormattedTextField tdcpf;
     private javax.swing.JTextField tdidade;
     private javax.swing.JTextField tdmatricula;
